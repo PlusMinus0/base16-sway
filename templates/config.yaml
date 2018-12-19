@@ -1,7 +1,7 @@
 color-scheme:
-    extension: .config
+    extension: -color-scheme
     output: themes
 
 bar-colors:
-    extension: .config
-    output: bar-colors
+    extension: -bar-colors
+    output: themes
