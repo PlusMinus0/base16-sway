@@ -10,11 +10,11 @@ a tiling and dynamic window manager for wayland.
 To use, you can copy the config files or use curl. You can then include the files:
 
 ```
-include color-scheme.conf
+include base16-default-dark-color-scheme
 
 bar {
 …
-include bar-colors.conf
+include base16-default-dark-bar-colors
 }
 ```
 
