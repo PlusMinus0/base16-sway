@@ -4,40 +4,19 @@ This repository is meant to work with
 [chriskempson/base16](https://github.com/chriskempson/base16).
 It provides a simple template that can be used with the base16 color schemes to
 generate a functional config file for
-[i3/i3](https://github.com/i3/i3),
-a tiling and dynamic window manager.
+[sway/sway](https://github.com/swaywm/sway),
+a tiling and dynamic window manager for wayland.
 
-To use, you can copy one of the config files in themes/ or use curl. First up, you'll want to generate a starting i3 configuration using `i3-config-wizard`. Then you can
-
-```
-$ curl https://raw.githubusercontent.com/khamer/base16-i3/master/themes/base16-default-dark.config >> ~/.config/i3/config
-```
-
-Note that this will create a second bar because it provides a `bar { ... }` section. You can choose which you'd like.
-
-Alternatively, you can fetch just the base16 colors in a format for the i3 config to use them as variables:
+To use, you can copy the config files or use curl. You can then include the files:
 
 ```
-$ curl https://raw.githubusercontent.com/khamer/base16-i3/master/colors/base16-default-dark.config >> ~/.config/i3/config
+include color-scheme.conf
+
+bar {
+…
+include bar-colors.conf
+}
 ```
 
-The benefit of this approach is you can reference the base16 colors through out
-your configuration if you want to customize it further (in particular,
-customize your `bar { ... }`.)
+It is important that you import the color scheme before you import the bar colors.
 
-For example, you might want to put the bulk of your configuration in `~/.config/i3/base`, reference the base16 variables, and then use a binding like this:
-
-```
-bindsym $mod+Shift+c exec "cat .config/i3/colors .config/i3/base > .config/i3/config && i3-msg reload"
-```
-
-So you can now run
-
-```
-$ curl https://raw.githubusercontent.com/khamer/base16-i3/master/colors/base16-default-dark.config > ~/.config/i3/colors
-```
-
-And hit **$mod + Shift + c** to load in the new colors.
-
-You can also fetch the separate bar colors and client properties sections of
-the full config from the `bar-colors` and `client-properties` directories.
